@@ -1,0 +1,50 @@
+#top {
+  color: white;
+  height: 700px;
+  min-height: 100%;
+  width: 100%;
+  background-image:  linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+#landing_button {
+  position: relative;
+  top:150px;
+}
+
+#about {
+  /* min-height: 100%; */
+  width: 100%;
+}
+
+#method {
+  /* min-height: 100%; */
+  background-color: beige;
+}
+
+#team {
+  /* min-height: 100%; */
+  /* color: white; */
+  /* width: 100%;
+  background-image:  linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+}
+
+#pricing {
+  /* min-height: 100%; */
+  background-color: beige;
+}
+
+#contact {
+  /* min-height: 100%; */
+  background-color: white;
+}
+
+p{
+  font-size: 18px;
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adasolve Technologies</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Adasolve</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#method">Method</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pricing">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="top" style="padding:5%;">
+      <div style="text-shadow: 0px 0px 10px black; position: relative; top:100px;">
+        <h1>Adaptive Solutions</h1>
+        <h4>Custom crafted cancer diagnostics for individuals and clinics.<h4>
+      </div>
+
+      <div style="text-shadow: 0px 0px 10px white">
+          <a id="landing_button" href="#about"
+             class="btn btn-lg btn-outline-light">Learn more and start today</a>
+       </div>
+
+     </div>
+
+    <div id="about" style="padding:5%">
+      <h1>About Adasolve</h1>
+      <p>Our goal is to increase the efficency of cancer diagnosis and treatment.</p>
+      <center><img style="margin:60px;"src="{{url_for('static', filename='Business Model.png')}}"></center>
+      <p>We are a platform that provides free cancer diangostics to individual by using AI to analyze the components of blood samples. In return, individuals
+        can readily get in touch with clinics, health professionals or researchers on the Adasolve platform at with high accessibility to further assess
+        their personnalized portfolios.
+    </div>
+
+    <div id="method" style="padding:5%">
+      <h1>Method</h1>
+      <p>We use deep learning and related data mining tools to deliver personalized diagnostics.</p>
+      <br>
+      <h4>Our current milestones:</h4>
+      <ul class="w3-large" style:"width:75%; padding:10%">
+        <li>Improved accuracy of detecting cancer based on ctDNA data from a John Hopkins University paper from 60% to 92%.</li>
+        <li>Analyzed individual importance of different biomarkers.</li>
+        <li>Offers custom crafted AI diagnostics to predict the occurence of general cancer.</li>
+      </ul>
+      <a style="width:49%;" href="https://drive.google.com/open?id=0B8nEOxDK8jIAT2ZLcVdHN2V0d2IyenE0dGt1ZmE1UDRLZlBZ"
+         class="btn btn-outline-success btn-lg">Research</a>
+
+         <a style="width:49%;" href="https://drive.google.com/open?id=1eY5_f9RGN2cK1ABGa7IRlhpR8fo7qfAhK3Alvfn8WUs"
+            class="btn btn-outline-success btn-lg">Prospectus</a>
+    </div>
+
+    <div id="team" style="padding:5%">
+      <h1>The team</h1>
+      <p>Meet those who are driving Adasolve. </p>
+      <div class="container">
+        <div class="row">
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF7JKcT22QJJw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Kb-Fak2--Do11-oFdVmlOwBwCkcsAR3U-wGRWJUFxuo" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Stephen Lu</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Former Lab Volunteer at Université de Montréal</h6>
+
+                      <p class="card-text black_text">Assisted a molecular biology lab at UdeM as well as pursuing projects related to machine learning.</p>
+                      <a href="https://www.linkedin.com/in/stephen-lu-02/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <!-- <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF7JKcT22QJJw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Kb-Fak2--Do11-oFdVmlOwBwCkcsAR3U-wGRWJUFxuo" alt="Card image cap"> -->
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Roey Borsteinas</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Student at Weizmann Institute of Science</h6>
+
+                      <p class="card-text black_text">Participated in scientific outreach programs, studying at Marianopolis College.</p>
+                      <a href="https://www.linkedin.com/in/roey-borsteinas-629a20b8/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C5603AQEMDnIESW6quQ/profile-displayphoto-shrink_200_200/0?e=1547078400&v=beta&t=VnL-pGXcULzgCUkDZBp1b7B_Z0lwUgMSknPWnacLniM" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Laurence Liang</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Former Software Intern at Expedia Group</h6>
+
+                      <p class="card-text black_text">Worked on neuroscience/AI project which qualified for a national science fair, working on computer related projects.</p>
+                      <a href="https://www.linkedin.com/in/laurence-liang-innovator/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C5603AQF9xu4BakEVsw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=VoAN7iO8VJZcVTGkvW1Fi5BpWq1P0YlfGMlq0SEgK48" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Richard Btaiche</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Product Manager at Shopify</h6>
+
+                      <p class="card-text black_text">A product manager at Shopify with vast experience of boosting startups and SMEs all accross the globe.</p>
+                      <a href="https://www.linkedin.com/in/richardbtaiche/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF3EBbiWYcuMQ/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Lwkr0DQoh8S_gIvyUAWhECNovTFt12wioYxMr9pamxI" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Mattieu Perreault</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Engineering Manager at Google</h6>
+                      <p class="card-text black_text">Leading a team at Google to develop usable software by billions around the world.</p>
+                      <a href="https://www.linkedin.com/in/mathieuperreault/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column" style="padding: 20px;">
+              <div class="card" style="width: 300px;">
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQGaXG5cjj2vDQ/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=xNi9Xu-FyqOX963hDA2xq7fef7ReD0ZxC8l-tg2JkHE" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title black_text">Jean Cristoph Btaiche</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">CEO at Young Leaders</h6>
+                      <p class="card-text black_text">Entrepreneur and founder of YoungLeaders, leading the way for the next generation of entrepreneurs.</p>
+                      <a href="https://www.linkedin.com/in/jcbtaiche/"
+                         class="btn btn-outline-dark btn-block">Contact</a>
+
+                  </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="pricing" style="padding:5%">
+      <h1>Pricing</h1>
+      <p>As we are currently in our development phase, we are actively looking for laboratories, institutions and individuals who would be willing to use Adasolve's services to analyze blood samples, all free of charge on our behalf.</p>
+    </div>
+
+    <div id="contact" style="padding:5%">
+      <h1>Contact</h1>
+      <p>Let's get in touch.</p>
+      <div class="w3-row-padding" style="margin-top:64px">
+        <!-- <div class="w3-half"> -->
+          <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Montreal, QC</p>
+          <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: (514) 971-4848</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: adasolve.mtl@gmail.com</p>
+
+    </div>
+
+    <footer style="padding:50px;">
+      <p>Copyright Adasolve 2018</p>
+    </footer>
+
+  </body>
+</html>
