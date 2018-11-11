@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      $(function() {
+            $('a[href*="#"]:not([href="#"])').click(function() {
+              if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                  $('html, body').animate({
+                    scrollTop: target.offset().top
+                  }, 1000);
+                  return false;
+                }
+              }
+            });
+          });
+
+
+    $("a[href^='#']").click(function(e) {
+	e.preventDefault();
+
+	var position = $($(this).attr("href")).offset().top;
+
+	$("body, html").animate({
+		scrollTop: position
+	} /* speed */ );
+});
+
+</script>
+
+<style>
+
+  hr {
+	height: 100vh;
+}
+</style
+  </head>
+  <body>
+
+    <a href="#one">One</a>
+<a href="#two">Two</a>
+
+<hr>
+
+<div id="one">First Element</div>
+
+<hr>
+
+<div id="two">Second Element</div>
+
+	<hr>
+  </body>
+</html>
