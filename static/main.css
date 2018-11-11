@@ -1,6 +1,6 @@
 #top {
   color: white;
-  height: 700px;
+  height: 900px;
   min-height: 100%;
   width: 100%;
   background-image:  linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("background.jpg");
@@ -12,7 +12,7 @@
 
 #landing_button {
   position: relative;
-  top:150px;
+  top:250px;
 }
 
 #about {
@@ -46,5 +46,10 @@
 }
 
 p{
-  font-size: 18px;
+  font-size: large;
+}
+
+.hideme
+{
+    opacity:0;
 }

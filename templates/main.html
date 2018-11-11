@@ -11,17 +11,62 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-1.7.1.min.js"
+      integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+      crossorigin="anonymous"></script>
 
      <script>
-        $('a').click(function(){
-          $('html, body').animate({
-              scrollTop: $( $(this).attr('href') ).offset().top
-          }, 500);
-          return false;
+     $("a[href^='#']").click(function(e) {
+        e.preventDefault();
+
+        var position = $($(this).attr("href")).offset().top;
+
+        $("body, html").animate({
+         scrollTop: position
+        } /* speed */ );
+        });
+
+      $(document).ready(function() {
+
+          /* Every time the window is scrolled ... */
+          $(window).scroll( function(){
+
+              /* Check the location of each desired element */
+              $('.hideme').each( function(i){
+
+                  var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                  var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                  /* If the object is completely visible in the window, fade it it */
+                  if( bottom_of_window > bottom_of_object ){
+
+                      $(this).animate({'opacity':'1'},750);
+
+                  }
+
+              });
+
+          });
+
       });
+
+
+
     </script>
+
+    <style>
+    .hideme
+    {
+        opacity:0;
+    }
+    </style>
+
   </head>
   <body>
+    <script>
+      $("#top").delay(1000).animate({"opacity": "1"}, 700);
+    </script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Adasolve</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,20 +93,20 @@
       </div>
     </nav>
 
-    <div id="top" style="padding:5%;">
-      <div style="text-shadow: 0px 0px 10px black; position: relative; top:100px;">
-        <h1>Adaptive Solutions</h1>
-        <h4>Custom crafted cancer diagnostics for individuals and clinics.<h4>
-      </div>
+    <div id="top" class="" style="padding:5%;">
+        <div style="text-shadow: 0px 0px 10px black; position: relative; top:100px;">
+          <h1>Adaptive Solutions</h1>
+          <h4>Custom crafted cancer diagnostics for individuals and clinics.<h4>
+        </div>
 
-      <div style="text-shadow: 0px 0px 10px white">
+        <div style="text-shadow: 0px 0px 10px white">
           <a id="landing_button" href="#about"
              class="btn btn-lg btn-outline-light">Learn more and start today</a>
        </div>
 
      </div>
 
-    <div id="about" style="padding:5%">
+    <div name="about" id="about" class="hideme" style="padding:5%">
       <h1>About Adasolve</h1>
       <p>Our goal is to increase the efficency of cancer diagnosis and treatment.</p>
       <center><img style="margin:60px;"src="{{url_for('static', filename='Business Model.png')}}"></center>
@@ -70,7 +115,7 @@
         their personnalized portfolios.
     </div>
 
-    <div id="method" style="padding:5%">
+    <div id="method" class="hideme" style="padding:5%">
       <h1>Method</h1>
       <p>We use deep learning and related data mining tools to deliver personalized diagnostics.</p>
       <br>
@@ -80,19 +125,24 @@
         <li>Analyzed individual importance of different biomarkers.</li>
         <li>Offers custom crafted AI diagnostics to predict the occurence of general cancer.</li>
       </ul>
-      <a style="width:49%;" href="https://drive.google.com/open?id=0B8nEOxDK8jIAT2ZLcVdHN2V0d2IyenE0dGt1ZmE1UDRLZlBZ"
+      <a style="width:49%;" target="_blank" href="https://drive.google.com/open?id=0B8nEOxDK8jIAT2ZLcVdHN2V0d2IyenE0dGt1ZmE1UDRLZlBZ"
          class="btn btn-outline-success btn-lg">Research</a>
 
-         <a style="width:49%;" href="https://drive.google.com/open?id=1eY5_f9RGN2cK1ABGa7IRlhpR8fo7qfAhK3Alvfn8WUs"
+         <a style="width:49%;" target="_blank" href="https://drive.google.com/open?id=1eY5_f9RGN2cK1ABGa7IRlhpR8fo7qfAhK3Alvfn8WUs"
             class="btn btn-outline-success btn-lg">Prospectus</a>
     </div>
 
     <div id="team" style="padding:5%">
+
+      <div class="hideme">
+
       <h1>The Team</h1>
       <p>Meet those who are driving Adasolve. </p>
+
+    </div>
       <div class="container">
         <div class="row">
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
                   <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF7JKcT22QJJw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Kb-Fak2--Do11-oFdVmlOwBwCkcsAR3U-wGRWJUFxuo" alt="Card image cap">
                   <div class="card-body">
@@ -100,29 +150,29 @@
                       <h6 class="card-subtitle mb-2 text-muted">Former Lab Volunteer at Université de Montréal</h6>
 
                       <p class="card-text black_text">Assisted a molecular biology lab at UdeM as well as pursuing projects related to machine learning.</p>
-                      <a href="https://www.linkedin.com/in/stephen-lu-02/"
+                      <a target="_blank" href="https://www.linkedin.com/in/stephen-lu-02/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
               </div>
           </div>
 
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
-                  <!-- <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF7JKcT22QJJw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Kb-Fak2--Do11-oFdVmlOwBwCkcsAR3U-wGRWJUFxuo" alt="Card image cap"> -->
+                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C4E03AQHIQvTM8kVS0Q/profile-displayphoto-shrink_800_800/0?e=1547683200&v=beta&t=Nq5WO11egCOG-NP1sUaA_wdKNHkEBveNblDGJZRMdWI" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title black_text">Roey Borsteinas</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Student at Weizmann Institute of Science</h6>
 
                       <p class="card-text black_text">Participated in scientific outreach programs, studying at Marianopolis College.</p>
-                      <a href="https://www.linkedin.com/in/roey-borsteinas-629a20b8/"
+                      <a target="_blank" href="https://www.linkedin.com/in/roey-borsteinas-629a20b8/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
               </div>
           </div>
 
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
                   <img class="card-img-top" src="https://media.licdn.com/dms/image/C5603AQEMDnIESW6quQ/profile-displayphoto-shrink_200_200/0?e=1547078400&v=beta&t=VnL-pGXcULzgCUkDZBp1b7B_Z0lwUgMSknPWnacLniM" alt="Card image cap">
                   <div class="card-body">
@@ -130,14 +180,14 @@
                       <h6 class="card-subtitle mb-2 text-muted">Former Software Intern at Expedia Group</h6>
 
                       <p class="card-text black_text">Worked on neuroscience/AI project which qualified for a national science fair, working on computer related projects.</p>
-                      <a href="https://www.linkedin.com/in/laurence-liang-innovator/"
+                      <a target="_blank" href="https://www.linkedin.com/in/laurence-liang-innovator/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
               </div>
           </div>
 
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
                   <img class="card-img-top" src="https://media.licdn.com/dms/image/C5603AQF9xu4BakEVsw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=VoAN7iO8VJZcVTGkvW1Fi5BpWq1P0YlfGMlq0SEgK48" alt="Card image cap">
                   <div class="card-body">
@@ -145,35 +195,35 @@
                       <h6 class="card-subtitle mb-2 text-muted">Product Manager at Shopify</h6>
 
                       <p class="card-text black_text">A product manager at Shopify with vast experience of boosting startups and SMEs all accross the globe.</p>
-                      <a href="https://www.linkedin.com/in/richardbtaiche/"
+                      <a target="_blank" href="https://www.linkedin.com/in/richardbtaiche/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
               </div>
           </div>
 
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
                   <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQF3EBbiWYcuMQ/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=Lwkr0DQoh8S_gIvyUAWhECNovTFt12wioYxMr9pamxI" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title black_text">Mattieu Perreault</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Engineering Manager at Google</h6>
                       <p class="card-text black_text">Leading a team at Google to develop usable software by billions around the world.</p>
-                      <a href="https://www.linkedin.com/in/mathieuperreault/"
+                      <a target="_blank" href="https://www.linkedin.com/in/mathieuperreault/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
               </div>
           </div>
 
-          <div class="column" style="padding: 20px;">
+          <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
                   <img class="card-img-top" src="https://media.licdn.com/dms/image/C4D03AQGaXG5cjj2vDQ/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=xNi9Xu-FyqOX963hDA2xq7fef7ReD0ZxC8l-tg2JkHE" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title black_text">Jean Cristoph Btaiche</h5>
                       <h6 class="card-subtitle mb-2 text-muted">CEO at Young Leaders</h6>
                       <p class="card-text black_text">Entrepreneur and founder of YoungLeaders, leading the way for the next generation of entrepreneurs.</p>
-                      <a href="https://www.linkedin.com/in/jcbtaiche/"
+                      <a target="_blank" href="https://www.linkedin.com/in/jcbtaiche/"
                          class="btn btn-outline-dark btn-block">Contact</a>
 
                   </div>
@@ -184,12 +234,12 @@
       </div>
     </div>
 
-    <div id="pricing" style="padding:5%">
+    <div id="pricing" class="hideme" style="padding:5%">
       <h1>Pricing</h1>
       <p>As we are currently in our development phase, we are actively looking for laboratories, institutions and individuals who would be willing to use Adasolve's services to analyze blood samples, all free of charge on our behalf.</p>
     </div>
 
-    <div id="contact" style="padding:5%">
+    <div id="contact" class="hideme" style="padding:5%">
       <h1>Contact</h1>
       <p>Let's get in touch.</p>
       <div class="w3-row-padding" style="margin-top:64px">
@@ -197,6 +247,7 @@
           <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Montreal, QC</p>
           <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: (514) 971-4848</p>
           <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: adasolve.mtl@gmail.com</p>
+      </div>
 
     </div>
 
