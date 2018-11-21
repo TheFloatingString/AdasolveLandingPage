@@ -9,3 +9,4 @@ keras
 sklearn
 numpy
 pandas
+tensorflow
