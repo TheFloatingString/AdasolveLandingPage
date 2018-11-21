@@ -5,11 +5,25 @@ from werkzeug import secure_filename
 # Data processing
 import json
 import pandas as pd
+import numpy as np
 
 # Machine leraning
 from keras.models import Sequential, load_model
+from sklearn import preprocessing
 
 app = Flask(__name__)
+
+#Variables
+cancer_dict = {
+	'Breast': 0,
+	'Colorectum': 0,
+	'Esophagus': 0,
+	'Liver': 0,
+	'Lung': 0,
+	'Ovary': 0,
+	'Pancreas': 0,
+	'Stomach': 0
+}
 
 @app.route('/')
 def index():
@@ -21,30 +35,42 @@ def form():
 
 @app.route("/analyze", methods=['GET', 'POST'])
 def analyze():
-    if request.method == 'POST':
-        f = request.files['file']
+	if request.method == 'POST':
+		f = request.files['file']
 
-        data = json.load(f)
-        df = pd.DataFrame(data, index=[0])
-        row_data = df.values
+		data = json.load(f)
+		df = pd.DataFrame(data, index=[0])
+		row_data = preprocessing.scale(np.array(df.values))
 
-        nn_model = load_model("models/multi-class-model-prob.h5")
-        prediction = nn_model.predict(row_data)
-        prediction = prediction[0]
+		nn_model = load_model("models/Detection.h5")
+		nn_model_1 = load_model("models/Localization.h5")
 
-        return render_template("results.html",
-        cancer_1=prediction[0]*100,
-        cancer_2=prediction[1]*100,
-        cancer_3=prediction[2]*100,
-        cancer_4=prediction[3]*100,
-        cancer_5=prediction[4]*100,
-        cancer_6=prediction[5]*100,
-        cancer_7=prediction[6]*100,
-        cancer_8=prediction[7]*100,
-        cancer_9=prediction[8]*100)
+		predictions = nn_model.predict(row_data)
 
-    else:
-        return "An error occured!"
+		result = ''
+		percentage = 0
+        
+		for pred in predictions:
+			if pred[0] > pred[1]:
+				result = 'Positive'
+				percentage = str(round(pred[0] * 100, 2)) + '%'
+			elif pred[1] > pred[0]:
+				result = 'Negative'
+				percentage = str(round(pred[1] * 100, 2)) + '%'
+
+		if result == 'Positive':
+			localization = nn_model_1.predict(row_data)
+
+			for prediction in localization:
+				prediction = list(prediction)
+				del prediction[5]
+				for cancer, score in cancer_dict.items():
+					cancer_dict[cancer] = str(round(prediction[0] * 100, 2)) + '%'
+					del prediction[0]
+
+			return render_template("results.html", detection=result, percentage=percentage, localization=cancer_dict)
+
+		else: return render_template("results.html", detection=result, percentage=percentage)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True)
