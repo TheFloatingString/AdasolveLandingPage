@@ -8,8 +8,13 @@ import pandas as pd
 
 # Machine leraning
 from keras.models import Sequential, load_model
+from sklearn.preprocessing import StandardScaler
+from sklearn.externals import joblib
 
 app = Flask(__name__)
+scaler_filename = "models/scaler.sav"
+scaler = joblib.load(scaler_filename)
+
 
 @app.route('/')
 def index():
@@ -28,7 +33,9 @@ def analyze():
         df = pd.DataFrame(data, index=[0])
         row_data = df.values
 
-        nn_model = load_model("models/multi-class-model-prob.h5")
+        row_data = scaler.transform(row_data)
+
+        nn_model = load_model("models/multi-class-model.h5")
         prediction = nn_model.predict(row_data)
         prediction = prediction[0]
 
