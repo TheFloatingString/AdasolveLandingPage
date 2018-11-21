@@ -9,4 +9,3 @@ keras
 sklearn
 numpy
 pandas
-json
