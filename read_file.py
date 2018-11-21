@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-
-from keras.models import Sequential, load_model
-from keras.layers import Dense, Activation, Dropout
-from keras.callbacks import EarlyStopping, ModelCheckpoint
+#
+# from keras.models import Sequential, load_model
+# from keras.layers import Dense, Activation, Dropout
+# from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 from sklearn import preprocessing, model_selection, neighbors
 from sklearn.decomposition import PCA
@@ -45,15 +45,14 @@ def handle_non_numerical_data(df):
     return df
 
 
-def one_hot(array, sample_list):
+def one_hot(array):
     """One hot encoding"""
-    unique_list = list(np.unique(np.array(sample_list)))
-    # print(unique_list)
+    unique_list = list(set(array))
 
     mod_array = []
     for value in array:
-        temp_row = np.zeros(len(unique_list), dtype="float")
-        temp_row[unique_list.index(value)] = 1.0
+        temp_row = np.zeros(len(unique_list))
+        temp_row[unique_list.index(value)] = 1
         mod_array.append(temp_row)
 
     return mod_array
@@ -69,10 +68,9 @@ X = np.array(df_mod.drop(columns=['Tumor type']), dtype=float)
 X = preprocessing.scale(X)
 
 y = np.array(df_mod['Tumor type'])
-original_y = y
-y = np.array(one_hot(y, y))
+y = np.array(one_hot(y))
 
-i=200
+i=10
 input_data = df_mod.drop(columns=["Tumor type"])
 input_data.loc[i].to_json("sample_test{}.json".format(i))
 
@@ -81,23 +79,24 @@ print(X.shape)
 print(y.shape)
 
 
+# X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
+#
+# model = Sequential()
+# model.add(Dense(20, input_shape=(46,), activation='relu'))
+# model.add(Dense(20, activation='relu'))
+# model.add(Dense(20, activation='relu'))
+# model.add(Dense(9, activation='sigmoid'))
+# model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
+# checkpointer = ModelCheckpoint('multi-class-model.h5', verbose=1, save_best_only=True)
+#
+# model.fit(X_train, y_train, validation_split=0.2, epochs=40, batch_size=2, callbacks=[checkpointer])
+#
+# print(model.evaluate(X_test, y_test))
+# model.save("multi-class-model.h5")
+
+
+
+
+
+
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
-
-model = Sequential()
-model.add(Dense(20, input_shape=(46,), activation='relu'))
-model.add(Dense(20, activation='relu'))
-model.add(Dense(20, activation='relu'))
-model.add(Dense(9, activation='softmax'))
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-checkpointer = ModelCheckpoint('multi-class-model.h5', verbose=1, save_best_only=True)
-
-model.fit(X_train, y_train, validation_split=0.2, epochs=5, batch_size=2, callbacks=[checkpointer])
-
-print(model.evaluate(X_test, y_test))
-model = load_model("multi-class-model-prob.h5")
-
-
-predictions = model.predict([[X_test[34]]])
-print("***")
-print(y_test[34])
-print(predictions)

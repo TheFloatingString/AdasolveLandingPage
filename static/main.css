@@ -55,6 +55,17 @@ html, body{
   background-attachment: fixed;
 }
 
+#results_top {
+  color: white;
+  height: 200px;
+  width: 100%;
+  padding: 4%;
+  background-image:  linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url("https://images.unsplash.com/photo-1491929536571-bdbc57e72324?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ec2bb87b06fb32e35a8fc003bf8786f&auto=format&fit=crop&w=1494&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 #upload_section{
   padding: 4%;
 }
