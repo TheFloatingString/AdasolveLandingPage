@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Adasolve Technologies</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+
     <script
       src="https://code.jquery.com/jquery-1.7.1.min.js"
       integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
@@ -120,11 +122,13 @@
       <p>We use deep learning and related data mining tools to deliver personalized diagnostics.</p>
       <br>
       <h4>Our current milestones:</h4>
-      <ul class="w3-large" style:"width:75%; padding:10%">
-        <li>Improved accuracy of detecting cancer based on ctDNA data from a John Hopkins University paper from 60% to 92%.</li>
-        <li>Analyzed individual importance of different biomarkers.</li>
-        <li>Offers custom crafted AI diagnostics to predict the occurence of general cancer.</li>
-      </ul>
+      <div style="font-size: 20px">
+        <ul class="w3-large" style:"width:75%; padding:10%">
+          <li>Improved accuracy of detecting cancer based on ctDNA data from a John Hopkins University paper from 60% to 92%.</li>
+          <li>Analyzed individual importance of different biomarkers.</li>
+          <li>Offers custom crafted AI diagnostics to predict the occurence of general cancer.</li>
+        </ul>
+      </div>
       <a style="width:49%;" target="_blank" href="https://drive.google.com/open?id=0B8nEOxDK8jIAT2ZLcVdHN2V0d2IyenE0dGt1ZmE1UDRLZlBZ"
          class="btn btn-outline-success btn-lg">Research</a>
 
@@ -189,7 +193,7 @@
 
           <div class="column hideme" style="padding: 20px;">
               <div class="card" style="width: 300px;">
-                  <img class="card-img-top" src="https://media.licdn.com/dms/image/C5603AQF9xu4BakEVsw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=VoAN7iO8VJZcVTGkvW1Fi5BpWq1P0YlfGMlq0SEgK48" alt="Card image cap">
+                  <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/19494651?s=400&v=4" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title black_text">Richard Btaiche</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Product Manager at Shopify</h6>

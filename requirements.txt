@@ -5,3 +5,8 @@ itsdangerous
 Jinja2
 peewee
 Werkzeug
+keras
+numpy
+sklearn
+pandas
+json
