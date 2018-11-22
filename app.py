@@ -9,7 +9,8 @@ import numpy as np
 
 # Machine leraning
 from keras.models import Sequential, load_model
-from sklearn import preprocessing
+from sklearn.preprocessing import StandardScaler
+from sklearn.externals import joblib
 
 app = Flask(__name__)
 
@@ -25,6 +26,9 @@ cancer_dict = {
 	'Stomach': 0
 }
 
+scaler_filename = "models/stephen_scaler.sav"
+scaler = joblib.load(scaler_filename)
+
 @app.route('/')
 def index():
     return render_template("main.html")
@@ -39,11 +43,13 @@ def analyze():
 		f = request.files['file']
 
 		data = json.load(f)
-		df = pd.DataFrame(data, index=[0])
-		row_data = preprocessing.scale(np.array(df.values))
+		df = pd.DataFrame(data, index = [0])
+		row_data = np.array(df, dtype=float)
+
+		row_data = scaler.transform(row_data)
 
 		nn_model = load_model("models/Detection.h5")
-		nn_model_1 = load_model("models/Localization.h5")
+		nn_model_1 = load_model("models/multi-class-model.h5")
 
 		predictions = nn_model.predict(row_data)
 
@@ -52,13 +58,13 @@ def analyze():
         
 		for pred in predictions:
 			if pred[0] > pred[1]:
-				result = 'Positive'
+				result = 'positive'
 				percentage = str(round(pred[0] * 100, 2)) + '%'
 			elif pred[1] > pred[0]:
-				result = 'Negative'
+				result = 'negative'
 				percentage = str(round(pred[1] * 100, 2)) + '%'
 
-		if result == 'Positive':
+		if result == 'positive':
 			localization = nn_model_1.predict(row_data)
 
 			for prediction in localization:
@@ -70,7 +76,7 @@ def analyze():
 
 			return render_template("results.html", detection=result, percentage=percentage, localization=cancer_dict)
 
-		else: return render_template("results.html", detection=result, percentage=percentage)
+		else: return render_template("results.html", detection=result, percentage=percentage, localization={})
 
 if __name__ == '__main__':
 	app.run(debug=True)
