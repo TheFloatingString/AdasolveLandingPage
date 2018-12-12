@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+    <link rel="shortcut icon" href="https://st2.depositphotos.com/1006689/10199/v/950/depositphotos_101990368-stock-illustration-atom-molecule-nucleus-symbol-vector.jpg.ico" />
 
 
   <style>
@@ -35,13 +36,17 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Adasolve</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- <a class="navbar-brand" href="/">Adasolve</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><b>Adasolve</b></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/#about">About</a>
           </li>
@@ -57,10 +62,17 @@
           <li class="nav-item">
             <a class="nav-link" href="/#contact">Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/form">Analyze</a>
+          </li>
         </ul>
       </div>
     </nav>
 
+    <div id="results_top" style="height: 200px;">
+      <h1>Your results</h1>
+    </div>
+    
     <br>
     <h3 align="center">Your diagnosis can confirm with {{percentage}} confidence that your cancer results are <a style="color: red;">{{detection}}<a/></h6>
     <br>
